@@ -1,23 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyVisuals : MonoBehaviour
+public class EnemyVisuals
 {
-    [SerializeField] private Enemy _enemy;
-    [SerializeField] private Animator _enemyAnimator;
+    private readonly Animator _enemyAnimator;
 
-    private const string GETHIT_TRIGGER = "GetHit";
-    private void OnEnable()
+    private const string GETHIT_STATE_NAME = "Getting Hit";
+    private float _crossFadeDuration = 0.1f;
+    public EnemyVisuals(Animator enemyAnimator)
     {
-        _enemy.OnTakeDamage += PlayGetHitAnimation;
+        _enemyAnimator = enemyAnimator;
     }
-    private void OnDisable()
+
+    public void PlayGetHitAnimation()
     {
-        _enemy.OnTakeDamage -= PlayGetHitAnimation;
-    }
-    private void PlayGetHitAnimation()
-    {
-        _enemyAnimator.SetTrigger(GETHIT_TRIGGER);
+        _enemyAnimator.CrossFade(GETHIT_STATE_NAME, _crossFadeDuration, 0, 0f);
     }
 }

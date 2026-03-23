@@ -1672,7 +1672,6 @@ GameObject:
   - component: {fileID: 4336692091885490820}
   - component: {fileID: 3126652070130175032}
   - component: {fileID: 2443814323767046607}
-  - component: {fileID: 6168298916401541075}
   m_Layer: 6
   m_Name: EnemyPrefab_2
   m_TagString: Untagged
@@ -1753,22 +1752,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd80db113829a724fb20b49d3970d220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 4336692091885490820}
   _maxHealth: 100
   _currentHealth: 0
---- !u!114 &6168298916401541075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7067327996723022187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 098148e475ff2484a8e6735373887a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 2443814323767046607}
-  _enemyAnimator: {fileID: 4336692091885490820}
 --- !u!1 &7259456472576229912
 GameObject:
   m_ObjectHideFlags: 0

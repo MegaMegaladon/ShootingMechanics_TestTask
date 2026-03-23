@@ -1,19 +1,27 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [SelectionBase]
 public class Gun : MonoBehaviour
 {
-    public event Action OnShoot;
-    [SerializeField] private InputActionReference _fire;
-
-    [SerializeField] private BulletBase _currentBulletPrefab;
+    [Header("References")]
+    [SerializeField] private Animator _animator;
+    [SerializeField] private ParticleSystem _muzzleFlash;
     [SerializeField] private Transform _firePoint;
+
+    [Header("Shooting")]
+    [SerializeField] private Bullet _currentBulletPrefab;
     [SerializeField] private float _cooldown = 1f;
 
+    [Header("Input")]
+    [SerializeField] private InputActionReference _fire;
+
     private float _nextShootTime;
+    private GunVisuals _visuals;
+    private void Awake()
+    {
+        _visuals = new GunVisuals(_animator, _muzzleFlash);
+    }
     private void OnEnable()
     {
         _fire.action.started += Shoot;
@@ -29,11 +37,12 @@ public class Gun : MonoBehaviour
 
         _nextShootTime = Time.time + _cooldown;
 
-        OnShoot?.Invoke();
-        BulletBase bullet = Instantiate(_currentBulletPrefab, _firePoint.position, _firePoint.rotation);
+        _visuals.PlayShootAnimation();
+
+        Bullet bullet = Instantiate(_currentBulletPrefab, _firePoint.position, _firePoint.rotation);
         bullet.Init(_firePoint.forward);
     }
-    public void SetCurrentBulletPrefab(BulletBase bullet)
+    public void SetCurrentBulletPrefab(Bullet bullet)
     {
         _currentBulletPrefab = bullet;
     }

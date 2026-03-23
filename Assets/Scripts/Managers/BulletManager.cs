@@ -1,25 +1,21 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
     [SerializeField] private Gun _gun;
-    [SerializeField] private List<BulletBase> bulletPrefabs;
+    private List<BulletDataSO> _bulletDatas;
 
-    private Dictionary<BulletType, BulletBase> _map;
+    public IReadOnlyList<BulletDataSO> BulletDatas => _bulletDatas;
 
-    private void Awake()
+    private void Start()
     {
-        _map = new Dictionary<BulletType, BulletBase>();
-
-        foreach (var bullet in bulletPrefabs)
-        {
-            _map[bullet.BulletType] = bullet;
-        }
+        _bulletDatas = Resources.LoadAll<BulletDataSO>("").ToList();
     }
 
-    public void SetBullet(BulletType type)
+    public void SetBullet(BulletDataSO data)
     {
-        _gun.SetCurrentBulletPrefab(_map[type]);
+        _gun.SetCurrentBulletPrefab(data.Prefab);
     }
 }

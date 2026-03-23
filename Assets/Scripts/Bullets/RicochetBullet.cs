@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RicochetBullet : BulletBase
+public class RicochetBullet : Bullet
 {
     [Header("Ricochet Settings")]
     [SerializeField] private int ricochetCount = 3;

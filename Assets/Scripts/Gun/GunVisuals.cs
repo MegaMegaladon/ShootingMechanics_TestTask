@@ -1,21 +1,19 @@
 using UnityEngine;
 
-public class GunVisuals : MonoBehaviour
+public class GunVisuals
 {
-    [SerializeField] Animator _gunAnimator;
-    [SerializeField] private Gun _gun;
+    private readonly Animator _animator;
+    private readonly ParticleSystem _muzzleFlash;
 
     private const string FIRE_TRIGGER = "Fire";
-    private void OnEnable()
+    public GunVisuals(Animator animator, ParticleSystem muzzleFlash)
     {
-        _gun.OnShoot += PlayShootAnimation;
+        _animator = animator;
+        _muzzleFlash = muzzleFlash;
     }
-    private void OnDisable()
+    public void PlayShootAnimation()
     {
-        _gun.OnShoot -= PlayShootAnimation;
-    }
-    private void PlayShootAnimation()
-    {
-        _gunAnimator.SetTrigger(FIRE_TRIGGER);
+        _animator.SetTrigger(FIRE_TRIGGER);
+        _muzzleFlash.Play();
     }
 }

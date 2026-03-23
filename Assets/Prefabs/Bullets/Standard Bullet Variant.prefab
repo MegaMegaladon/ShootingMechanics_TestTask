@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 6804990658058999119, guid: 65c9f6563c561ee4e8905d1e6a32548b,
         type: 3}
       propertyPath: m_Name
-      value: Normal Bullet Variant
+      value: Standard Bullet Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8505413676804956700, guid: 65c9f6563c561ee4e8905d1e6a32548b,
         type: 3}
@@ -303,11 +303,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7414612636538274187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c928c9ce07fcd874db6dd669e28e8ee9, type: 3}
+  m_Script: {fileID: 11500000, guid: e6dde340dbf68454a8daa13a76706456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 2309146484148115377}
   _trail: {fileID: 5824224363770922727}
   damage: 10
-  _bulletType: 0
   _speed: 50
